@@ -13,6 +13,10 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     let notifications = UNUserNotificationCenter.current()
 
     
+    @IBOutlet weak var doitLabel: UIButton!
+    
+    @IBOutlet weak var stopLabel: UIButton!
+    
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var messageTextField: UITextField!
@@ -24,6 +28,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         okButtonLabel.isHidden = true
+        
         // Do any additional setup after loading the view.
         notifications.requestAuthorization(options: [.alert, .sound]) { (permissionGranted, error) in
             if (!permissionGranted){
@@ -31,6 +36,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
             }
         }
         notifications.delegate = self
+        
     }
     
     @IBAction func buttonAction(_ sender: Any) {
@@ -122,6 +128,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         self.okButtonLabel.text = "Stopped"
 
     }
+    
     
     
 }
